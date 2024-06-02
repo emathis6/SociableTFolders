@@ -2,18 +2,28 @@ using System;
 
 class Program {
  public static void Main (string[] args) {
-   const double Centimeters = 2.54;
-   Console.WriteLine("Please enter measurements in inches: ");
-   var input = Console.ReadLine();
    
-   if (double.TryParse(input, out double inches)){
-     double centimeters = inches * Centimeters;
-     Console.WriteLine("{0} inches is {1} centimeters", inches, centimeters);  
-   }
-   else {
-     Console.WriteLine("Invalid input");
+   const double baseRate = 200.00;
+   const double hourlyRate = 150.00;
+   const double milesRate = 2.00;
+   
+   Console.WriteLine("Enter the number of hours: ");
+   String hoursInput = Console.ReadLine();
+   
+   Console.WriteLine("Enter the number of miles: ");
+   String milesInput = Console.ReadLine();
+
+   double estimate = baseRate + (hourlyRate * double.Parse(hoursInput) + milesRate * double.Parse(milesInput));
+
+   Console.WriteLine("Total estimate is: ${0:F2}", estimate);
+
    }
 
  }    
 
-}
+
+  
+   
+    
+        
+ 

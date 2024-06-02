@@ -1,1 +1,24 @@
+using System;
+
+class Program {
+ public static void Main (string[] args) {
+   const double baseRate = 200.00;
+   const double hourlyRate = 150.00;
+   const double milesRate = 2.00;
+
+ Console.WriteLine(“Enter number of hours”);
+ String hoursInput = Console.ReadLine()
+
+  Console.WriteLine(“Enter number of miles”);
+  String milesInput = Console.ReadLine()
+
+   double estime = baseRate + (hourlyRate * hours) + MilageRate * miles); 
+
+   Console.WriteLine("The total estimate is: ${0}”, estimate);  
+
+   }
+
+ }    
+
+}
 
