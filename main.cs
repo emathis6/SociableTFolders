@@ -1,22 +1,19 @@
 using System;
 
 class Program {
- public static void Main (string[] args) {
+ static void Main (string[] args) {
    
-   const double baseRate = 200.00;
-   const double hourlyRate = 150.00;
-   const double milesRate = 2.00;
-   
-   Console.WriteLine("Enter the number of hours: ");
-   String hoursInput = Console.ReadLine();
-   
-   Console.WriteLine("Enter the number of miles: ");
-   String milesInput = Console.ReadLine();
+    const int MaxLength = 140;
+    Console.WriteLine("Enter your message:");
+    string message = Console.ReadLine();
+    if(message.Length > MaxLength)
+    {
+      Console.WriteLine("Rejected");
 
-   double estimate = baseRate + (hourlyRate * double.Parse(hoursInput) + milesRate * double.Parse(milesInput));
-
-   Console.WriteLine("Total estimate is: ${0:F2}", estimate);
-
+       }
+    else
+      Console.WriteLine("Posted");
+    
    }
 
  }    
