@@ -1,43 +1,60 @@
 using System;
-using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 class Program {
- static void Main (string[] args) {
+ static void Main () {
 
-    Console.WriteLine("Enter wind speed in miles per hour:");
-    string input = Console.ReadLine();
+   List<int> perfectNumbers = new List<int>();
 
-    string numericPart = Regex.Replace(input, @"[^0-9.]", "");
-
-    if (double.TryParse(numericPart, out double windSpeed))
-         
+    Console.WriteLine("Please enter a number between 1 and 10,000: ");
+    for (int i = 1; i <= 10000; i++)
     {
-      if (windSpeed >= 157){
-        Console.WriteLine("Category Five Hurricane");
-       } 
-       else if (windSpeed >= 130){
-        Console.WriteLine("Category Four Hurricane");
-       } 
-       else if (windSpeed >= 111){
-        Console.WriteLine("Category Three Hurricane");
-       }
-       else if (windSpeed >= 96){
-        Console.WriteLine("Category Two Hurricane");
-       }
-       else if (windSpeed >= 74){
-        Console.WriteLine("Category One Hurricane");
-       }
-       else   
-       {
-        Console.WriteLine("Not a Hurricane");
-       }
+      if (IsPerfectNumber(i))
+      {
+        perfectNumbers.Add(i);
+      }
     }
-    else
+
+    while (true) 
     {
-       Console.WriteLine("Invalid input. Please enter a valid number.");
+      string input = Console.ReadLine();
+
+      if (int.TryParse(input, out int number))
+      {
+        if (IsPerfectNumber(number))
+        {
+          Console.WriteLine("Perfect Number");
+        }
+        else
+        {
+          Console.WriteLine("Not a Perfect Number");
+        }
+      }
     }
+ }
+  
+
+static bool IsPerfectNumber(int number)
+{
+  if (number < 2)
+    return false; 
+
+    int sum = 1;
+    for (int i = 2; i <= Math.Sqrt(number); i++)
+    {
+      if (number % i == 0)
+      {
+        sum += i;
+        if (i != number / i)
+        {
+          sum += number / i;
+        }
+      }
+    }
+    return sum == number;
   }
-}
+  }
+
 
 
 
