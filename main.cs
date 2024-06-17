@@ -1,60 +1,57 @@
 using System;
 using System.Collections.Generic;
-
-class Program {
- static void Main () {
-
-   List<int> perfectNumbers = new List<int>();
-
-    Console.WriteLine("Please enter a number between 1 and 10,000: ");
-    for (int i = 1; i <= 10000; i++)
-    {
-      if (IsPerfectNumber(i))
-      {
-        perfectNumbers.Add(i);
-      }
-    }
-
-    while (true) 
-    {
+  class Program {
+    static void Main (string[] args) {
+      
+      Console.WriteLine ("Please enter the salesperson's initial (D, E, or F):");
       string input = Console.ReadLine();
-
-      if (int.TryParse(input, out int number))
+      Console.WriteLine("Please enter the amount of sales:");
+      double input = Convert.ToDouble(Console.ReadLine());
+      
+      int sales = int.Parse(Console.ReadLine());
+      int totalSalesD = 0;
+      int totalSalesE = 0;
+      int totalSalesF = 0;
+      int grandTotal = 0;
+      
+      while true
       {
-        if (IsPerfectNumber(number))
+        Console.WriteLine ("Please enter the salesperson's initial (D, E, or F):");
+        string salesPerson = Console.ReadLine();
+
+        if (salesPerson != "D" && input != "E" && input != "F")
         {
-          Console.WriteLine("Perfect Number");
+          Console.WriteLine("Invalid input. Please enter D, E, or F.");
+          continue;
+          
+       }
+        Console.WriteLine("Please enter the amount of sales:");
+        int sales = int.Parse(Console.ReadLine());
         }
-        else
+            
+
+        switch (salesPerson)
         {
-          Console.WriteLine("Not a Perfect Number");
+          case 'D':
+            totalSalesD += sale;
+            break;
+          case 'E':
+            totalSalesE += sale;
+            break; 
+          case 'F':
+            totalSalesF += sale;
+            break;
+
+          }
         }
+
+      //Console.WriteLine ("D Total:{0}", dTotal);
+      //Console.WriteLine ("E Total:{0}", eTotal);
+      //Console.WriteLine ("F Total:{0}", fTotal);
+      //Console.WriteLine ("Grand Total:{0}", dTotal + eTotal + fTotal);
+     
       }
-    }
- }
-  
-
-static bool IsPerfectNumber(int number)
-{
-  if (number < 2)
-    return false; 
-
-    int sum = 1;
-    for (int i = 2; i <= Math.Sqrt(number); i++)
-    {
-      if (number % i == 0)
-      {
-        sum += i;
-        if (i != number / i)
-        {
-          sum += number / i;
-        }
-      }
-    }
-    return sum == number;
-  }
-  }
-
+    } 
 
 
 
