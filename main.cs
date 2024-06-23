@@ -1,9 +1,7 @@
 using System;
 class Program {
     static void Main (string[] args) { 
-        decimal totalSalesD = 0;
-        decimal totalSalesE = 0;
-        decimal totalSalesF = 0;
+        decimal[] totalSales = new decimal[3];
         decimal grandTotal = 0;
       
       while (true)
@@ -15,61 +13,37 @@ class Program {
         {
           break;
           }
-        
-        if (initialInput != "D" && initialInput != "E" && initialInput != "F")
-        {
-          Console.WriteLine("Invalid input. Please enter a valid initial.");
-          continue;
-
-        }
-        
-        Console.WriteLine("Please enter the salesperson's sales:");
-        if (!decimal.TryParse(Console.ReadLine(), out decimal saleAmount))
-
-        {
-          Console.WriteLine("Invalid input. Please enter a valid sales amount.");
-          
-        }
-
+        int index = -1;
         switch (initialInput)
         {
-        case "D":
-          totalSalesD += saleAmount;
-          break;
-
-        case "E":
-          totalSalesE += saleAmount;
-          break;
-
-        case "F":
-          totalSalesF += saleAmount;
-          break;
+          case "D" : index = 0; break;
+          case "E" : index = 1; break;
+          case "F" : index = 2; break;
+          default : Console.WriteLine("Invalid initial");
+          continue;    
         }
+        Console.WriteLine("Please enter the salesperson's sales:");
+        if (!decimal.TryParse(Console.ReadLine(), out decimal saleAmount))
+        {
+          Console.WriteLine("Invalid sale amount");
+          continue;
+        }
+        totalSales[index] += saleAmount;
         grandTotal += saleAmount;
         }
-
-        string highestSalesperson = "";
-        decimal highestTotal = 0;
-      
-        if (totalSalesD > highestTotal)
+       string[] salespersonNames = {"D", "E", "F"};
+       string highestSalesperson = "";
+       decimal highestTotal = 0;
+      for (int i = 0; i < totalSales.Length; i++)
+      {
+        if (totalSales[i] > highestTotal)
         {
-          highestTotal = totalSalesD;
-          highestSalesperson = "D";
+          highestTotal = totalSales[i];
+          highestSalesperson = salespersonNames[i];  
         }
-        if (totalSalesE > highestTotal)
-        {
-          highestTotal = totalSalesE;
-          highestSalesperson = "E";
-        }
-        if (totalSalesF > highestTotal)
-        {
-          highestTotal = totalSalesF;
-          highestSalesperson = "F";
-        }
-
+      }
       Console.WriteLine ($"\nGrand Total: {grandTotal:C}");
       Console.WriteLine ($"Highest Sale: {highestSalesperson}");
-     
       }
     } 
 
