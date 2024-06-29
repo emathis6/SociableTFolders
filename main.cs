@@ -8,17 +8,19 @@ partial class Program
     bool validTemps = false;
 
     while (!validTemps){
-      Console.WriteLine("Temperature");
+      Console.WriteLine("Please enter five daily Fahrenheit Temperatures that range from -30 to 130");
 
       for (int i = 0; i < 5; i++)
       {
         Console.WriteLine($"Temperature {i + 1}: ");
         int temp = int.Parse(Console.ReadLine());
 
-        while (temp < -30 || temp > 130)
+        if (temp < -30 || temp > 130)
         {
-          Console.WriteLine("Invalid temperature");
-          temp = Int32.Parse(Console.ReadLine());
+          Console.WriteLine("Check expected outcome");
+          Console.WriteLine($"Temperature {i + 1}: ");
+          temp = int.Parse(Console.ReadLine());
+
           }
         temperatures[i] = temp;
       }
@@ -27,7 +29,7 @@ partial class Program
       bool descending = true;
 
       for (int i = 0; i < 4; i++)
-        
+
       {
         if (temperatures[i] > temperatures[i + 1])
         {
@@ -58,16 +60,16 @@ partial class Program
       validTemps = ascending || descending;
     }
 
-      Console.WriteLine("5-day Temperature: [");
+      Console.Write("5-day Temperature: [");
       for (int i = 0; i < 5; i++)  
       {
-          Console.WriteLine(temperatures[i]);
+          Console.Write(temperatures[i]);
           if (i < 4)
           {
             Console.Write(",");
           }
       }  
-          
+
       Console.WriteLine("]");
 
       double average = CalculateAverage(temperatures);
@@ -85,12 +87,6 @@ static double CalculateAverage(int[] temperatures)
      return (double)sum / temperatures.Length;
     }
 }
-    
-          
-          
-  
-
-
 
     
 
