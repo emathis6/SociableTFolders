@@ -1,97 +1,42 @@
 using System;
 
-partial class Program
+class Program
 {
-  static void Main()
+  static void Main(string[] args)
   {
-    int[] temperatures = new int[5];
-    bool validTemps = false;
+    DisplayMessage();
 
-    while (!validTemps){
-      Console.WriteLine("Please enter five daily Fahrenheit Temperatures that range from -30 to 130");
+    string input = Console.ReadLine();
 
-      for (int i = 0; i < 5; i++)
-      {
-        Console.WriteLine($"Temperature {i + 1}: ");
-        int temp = int.Parse(Console.ReadLine());
-
-        if (temp < -30 || temp > 130)
-        {
-          Console.WriteLine("Check expected outcome");
-          Console.WriteLine($"Temperature {i + 1}: ");
-          temp = int.Parse(Console.ReadLine());
-
-          }
-        temperatures[i] = temp;
-      }
-
-      bool ascending = true;
-      bool descending = true;
-
-      for (int i = 0; i < 4; i++)
-
-      {
-        if (temperatures[i] > temperatures[i + 1])
-        {
-          ascending = false;
-        }
-        if (temperatures[i] < temperatures[i + 1])
-        {
-        descending = false;
-        }
-      }
-
-      if (!ascending && !descending)
-      {
-        Console.WriteLine("It's a mixed bag");
-        }
-      else if (ascending)
-        {
-         Console.WriteLine("It's getting warmer");
-         }
-      else if (descending)
-      {
-        Console.WriteLine("It's getting colder");
-      }
-      else 
-      {
-        Console.WriteLine("It's a mixed bag");
-      }
-      validTemps = ascending || descending;
-    }
-
-      Console.Write("5-day Temperature: [");
-      for (int i = 0; i < 5; i++)  
-      {
-          Console.Write(temperatures[i]);
-          if (i < 4)
-          {
-            Console.Write(",");
-          }
-      }  
-
-      Console.WriteLine("]");
-
-      double average = CalculateAverage(temperatures);
-      Console.Write($"Average Temperature is {average} degrees");
-
-    } 
-
-static double CalculateAverage(int[] temperatures)
-  {
-    int sum = 0;
-    foreach (int temp in temperatures)
+    if (input == "1")
     {
-      sum += temp;
+      Console.WriteLine("Last year's competition had 122 contestants, and this year's has 426 contestants");
+      Console.WriteLine("Revenue expected this year is $10,650");
+      Console.WriteLine("It is true that this year's competition is bigger than last year's.");
     }
-     return (double)sum / temperatures.Length;
+
+    else if (input == "2")
+    {
+      Console.WriteLine("Thank you for using the Greenville Revenue App, good-bye!");
     }
-}
 
-    
-
+    static void DisplayMessage()
+    {
+      Console.WriteLine("************************************");
+      Console.WriteLine("*  The stars shine in Greenville.  *");
+      Console.WriteLine("************************************");
+      Console.WriteLine();
+      Console.WriteLine("Please Enter the following number below from the following menu:");
+      Console.WriteLine();
+      Console.WriteLine("1. CALCULATE Greenville Revenue Year-Over-Year");
+      Console.WriteLine("2. Exit");
+    }
+    }
   
-   
-    
-        
+  }
+
+
+
+
+
  
