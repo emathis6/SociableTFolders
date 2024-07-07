@@ -1,31 +1,45 @@
 using System;
+
 class Program
 {
-  static void Main(string[] args)
+  public static void Main()
   {
     DisplayMessage();
-
     string input = Console.ReadLine();
-
+    
     if (input == "1")
+
     {
-      Console.WriteLine("How many contestants last year?");
+      
+      Console.WriteLine("How many contestants in previous year?");
       int contestantsLastYear = Convert.ToInt32(Console.ReadLine());
 
-      Console.WriteLine("How many contestants this year?");
+      Console.WriteLine("How many contestants in current year?");
       int contestantsThisYear = Convert.ToInt32(Console.ReadLine());
 
-      Console.WriteLine($"Last year's competition had {contestantsLastYear} contestants, and this year's has {contestantsThisYear} contestants");
-
-      int revenueExpectedThisYear = contestantsThisYear * 25;
-      Console.WriteLine($"Revenue expected this year is ${revenueExpectedThisYear:N0}");
-      Console.WriteLine("It is true that this year's competition is bigger than last year's.");
+      {
+       if (contestantsThisYear > 2 * contestantsLastYear)
+      {
+        Console.WriteLine("The competition is more than twice as big this year!");
+      }
+      else if (contestantsThisYear > contestantsLastYear)
+      {
+        Console.WriteLine("The competition is bigger than ever!");
+      }
+      else
+      {
+        Console.WriteLine("A tight race this year! Come out and cast your vote!");
+      }
+     }
     }
+  }
+      //else if (input == "2")
+      //{
+        //Console.WriteLine("Thank you for using the Greenville Revenue App, good-bye!");
+      //}
 
-    else if (input == "2")
-    {
-      Console.WriteLine("Thank you for using the Greenville Revenue App, good-bye!");
-    }
+      //Console.WriteLine("It is true that this year's competition is bigger than last year's.");
+    
 
     static void DisplayMessage()
     {
@@ -40,7 +54,7 @@ class Program
     }
     }
   
-  }
+  
 
 
 
