@@ -10,6 +10,12 @@ class Program
 
     if (input == "1")
     {
+      Console.WriteLine("How many contestants last year?");
+      int contestantsLastYear = Convert.ToInt32(Console.ReadLine());
+
+      Console.WriteLine("How many contestants this year?");
+      int contestantsThisYear = Convert.ToInt32(Console.ReadLine());
+
       Console.WriteLine("Last year's competition had 122 contestants, and this year's has 426 contestants");
       Console.WriteLine("Revenue expected this year is $10,650");
       Console.WriteLine("It is true that this year's competition is bigger than last year's.");
