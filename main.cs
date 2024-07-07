@@ -1,5 +1,4 @@
 using System;
-
 class Program
 {
   static void Main(string[] args)
@@ -16,8 +15,10 @@ class Program
       Console.WriteLine("How many contestants this year?");
       int contestantsThisYear = Convert.ToInt32(Console.ReadLine());
 
-      Console.WriteLine("Last year's competition had 122 contestants, and this year's has 426 contestants");
-      Console.WriteLine("Revenue expected this year is $10,650");
+      Console.WriteLine($"Last year's competition had {contestantsLastYear} contestants, and this year's has {contestantsThisYear} contestants");
+
+      int revenueExpectedThisYear = contestantsThisYear * 25;
+      Console.WriteLine($"Revenue expected this year is ${revenueExpectedThisYear:N0}");
       Console.WriteLine("It is true that this year's competition is bigger than last year's.");
     }
 
