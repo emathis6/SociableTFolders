@@ -11,18 +11,16 @@ class Program
 
     {
       
-      Console.WriteLine("How many contestants in previous year?");
-      int contestantsLastYear = Convert.ToInt32(Console.ReadLine());
-
-      Console.WriteLine("How many contestants in current year?");
-      int contestantsThisYear = Convert.ToInt32(Console.ReadLine());
+      int contestantsLastYear = GetValidContestantsNumber("How many contestants in previous year?");
+      int contestantsThisYear = GetValidContestantsNumber("How many contestants in this year");
+      
 
       {
-       if (contestantsThisYear > 2 * contestantsLastYear)
+       if (contestantsThisYear == 2 * contestantsLastYear)
       {
         Console.WriteLine("The competition is more than twice as big this year!");
       }
-      else if (contestantsThisYear > contestantsLastYear)
+        else if (contestantsThisYear >= 2 * contestantsLastYear)
       {
         Console.WriteLine("The competition is bigger than ever!");
       }
@@ -32,15 +30,34 @@ class Program
       }
      }
     }
-  }
-      //else if (input == "2")
-      //{
-        //Console.WriteLine("Thank you for using the Greenville Revenue App, good-bye!");
-      //}
 
-      //Console.WriteLine("It is true that this year's competition is bigger than last year's.");
+
+    static int GetValidContestantsNumber(string prompt)
+    {
+      int number;
+      bool isValidNumber = false;
+
+      do
+      {
+        Console.WriteLine(prompt);
+        string input = Console.ReadLine();
+
+        if (int.TryParse(input, out number) && number >= 0 && number <= 30)
+        {
+          isValidNumber = true;
+          
+        }
+        else
+        {
+          Console.WriteLine("Invalid input. Please enter a number between 0 and 30.");
+        }
+      } while (!isValidNumber);
+      
+      return number;
+
+  }    
+      
     
-
     static void DisplayMessage()
     {
       Console.WriteLine("************************************");
@@ -53,6 +70,9 @@ class Program
       Console.WriteLine("2. Exit");
     }
     }
+  }
+
+    
   
   
 
